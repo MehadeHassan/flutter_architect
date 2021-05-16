@@ -1,0 +1,38 @@
+name: flutter_architect
+description: A new Flutter project.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.12.0-0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  authentication_repository:
+    path: packages/authentication_repository
+  konsole:
+    path: packages/konsole
+  bloc: ^7.0.0
+  email_validator: ^2.0.1
+  firebase_core: ^1.1.0
+  flow_builder: ^0.0.2
+  flutter_bloc: ^7.0.0
+  formz: ^0.4.0
+  freezed_annotation: ^0.14.1
+  intl: ^0.17.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  bloc_test: ^8.0.0
+  build_runner: ^2.0.2
+  freezed: ^0.14.1+3
+  mocktail: ^0.1.2
+  very_good_analysis: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
