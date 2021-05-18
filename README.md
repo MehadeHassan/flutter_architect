@@ -5,7 +5,7 @@
 # 
 
 - [x] Firebase Authentication 
-- []
+- [x] Hive Cache
 - []
 - []
 - [x] Simple Log 🪵

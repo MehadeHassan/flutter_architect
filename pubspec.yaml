@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
   authentication_repository:
     path: packages/authentication_repository
+  cache_repository:
+    path: packages/cache_repository
   konsole:
     path: packages/konsole
   bloc: ^7.0.0
@@ -22,6 +24,7 @@ dependencies:
   flutter_bloc: ^7.0.0
   formz: ^0.4.0
   freezed_annotation: ^0.14.1
+  hive_flutter: ^1.0.0
   intl: ^0.17.0
 
 dev_dependencies:
