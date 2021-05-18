@@ -1,21 +1,26 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:authentication_repository/src/exception/firebase_authentication_exception.dart';
+import 'package:cache_repository/cache_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:konsole/konsole.dart';
+import 'package:very_good_analysis/very_good_analysis.dart';
 
 class FirebaseAuthenticationRepository implements AuthenticationRepository {
   FirebaseAuthenticationRepository({
     FirebaseAuth? instance,
-  }) : _instance = instance ?? FirebaseAuth.instance;
+    required HiveCache<AuthenticationUser?> cache,
+  })   : _instance = instance ?? FirebaseAuth.instance,
+        _cache = cache;
 
   final FirebaseAuth _instance;
+  final CacheRepository<AuthenticationUser?> _cache;
 
   String _code = '';
   String? _message;
-
+  static const _userCacheKey = '__user_cache_key__';
 
   @override
-  AuthenticationUser? get currentUser =>
-      _instance.currentUser?.toAuthenticationUser;
+  AuthenticationUser? get currentUser => _cache.read(_userCacheKey);
 
   @override
   Future<void> logOut() async {
@@ -109,9 +114,17 @@ class FirebaseAuthenticationRepository implements AuthenticationRepository {
   }
 
   @override
-  Stream<AuthenticationUser?> get user => _instance.authStateChanges().map(
-        (firebaseUser) => firebaseUser?.toAuthenticationUser,
-      );
+  Stream<AuthenticationUser?> get user {
+    return _instance.authStateChanges().map(
+      (firebaseUser) {
+        final user = firebaseUser?.toAuthenticationUser;
+
+        unawaited(_cache.write(_userCacheKey, user));
+
+        return user;
+      },
+    );
+  }
 }
 
 extension on User {

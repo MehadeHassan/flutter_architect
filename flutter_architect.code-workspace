@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "packages/authentication_repository"
+		},
+		{
+			"path": "packages/cache_repository"
+		}
+	],
+	"settings": {}
+}

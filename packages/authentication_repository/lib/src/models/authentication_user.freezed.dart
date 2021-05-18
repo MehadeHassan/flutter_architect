@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AuthenticationUserTearOff {
   const _$AuthenticationUserTearOff();
 
-  _Authentication call({required String uid}) {
+  _Authentication call({@HiveField(0) required String uid}) {
     return _Authentication(
       uid: uid,
     );
@@ -28,6 +28,7 @@ const $AuthenticationUser = _$AuthenticationUserTearOff();
 
 /// @nodoc
 mixin _$AuthenticationUser {
+  @HiveField(0)
   String get uid => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,7 +41,7 @@ abstract class $AuthenticationUserCopyWith<$Res> {
   factory $AuthenticationUserCopyWith(
           AuthenticationUser value, $Res Function(AuthenticationUser) then) =
       _$AuthenticationUserCopyWithImpl<$Res>;
-  $Res call({String uid});
+  $Res call({@HiveField(0) String uid});
 }
 
 /// @nodoc
@@ -72,7 +73,7 @@ abstract class _$AuthenticationCopyWith<$Res>
           _Authentication value, $Res Function(_Authentication) then) =
       __$AuthenticationCopyWithImpl<$Res>;
   @override
-  $Res call({String uid});
+  $Res call({@HiveField(0) String uid});
 }
 
 /// @nodoc
@@ -104,9 +105,10 @@ class __$AuthenticationCopyWithImpl<$Res>
 class _$_Authentication
     with DiagnosticableTreeMixin
     implements _Authentication {
-  const _$_Authentication({required this.uid});
+  const _$_Authentication({@HiveField(0) required this.uid});
 
   @override
+  @HiveField(0)
   final String uid;
 
   @override
@@ -141,9 +143,11 @@ class _$_Authentication
 }
 
 abstract class _Authentication implements AuthenticationUser {
-  const factory _Authentication({required String uid}) = _$_Authentication;
+  const factory _Authentication({@HiveField(0) required String uid}) =
+      _$_Authentication;
 
   @override
+  @HiveField(0)
   String get uid => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
